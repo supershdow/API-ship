@@ -8,13 +8,16 @@ app=Flask(__name__)
 def root(city='nyc'):
     w=util.get_weather(city)
     t=util.toFahrenheit(w)
-    if t>110:
+    if t>95:
         pepper='Ghost Pepper'
-    elif 50<t<=110:
+        image='ghost-pepper'
+    elif 50<t<=95:
         pepper='Jalapeno Pepper'
+        image='Jalapeno'
     else:
         pepper='Sweet Bell Pepper'
-    return render_template('weather.html', weather=t, pepper=pepper)
+        image='Bell-pepper'
+    return render_template('weather.html', weather=t, pepper=pepper, image=image)
 
 if __name__=='__main__':
     app.debug=True
