@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather</title>
+</head>
+
+<body>
+<h3>The temperature is {{weather}} degrees fahrenheit</h3>
+<h4>Just like a {{pepper}} out there</h4>
+<img src="../static/img/{{image}}.jpg">
+</body>
+</html>

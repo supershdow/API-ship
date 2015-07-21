@@ -7,17 +7,21 @@ app=Flask(__name__)
 @app.route('/<city>')
 def root(city='nyc'):
     w=util.get_weather(city)
-    t=util.toFahrenheit(w)
-    if t>95:
-        pepper='Ghost Pepper'
-        image='ghost-pepper'
-    elif 50<t<=95:
-        pepper='Jalapeno Pepper'
-        image='Jalapeno'
+    if isinstance(w,float):
+        t=util.toFahrenheit(w)
+        s=util.get_name(city)
+        if t>95:
+            pepper='Ghost Pepper'
+            image='ghost-pepper'
+        elif 50<t<=95:
+            pepper='Jalapeno Pepper'
+            image='Jalapeno'
+        else:
+            pepper='Sweet Bell Pepper'
+            image='Bell-pepper'
+        return render_template('weather.html', weather=t, pepper=pepper, image=image, s=s)
     else:
-        pepper='Sweet Bell Pepper'
-        image='Bell-pepper'
-    return render_template('weather.html', weather=t, pepper=pepper, image=image)
+        return w
 
 @app.route('/sloth')
 def sloth():
