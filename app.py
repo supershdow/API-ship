@@ -19,6 +19,11 @@ def root(city='nyc'):
         image='Bell-pepper'
     return render_template('weather.html', weather=t, pepper=pepper, image=image)
 
+@app.route('/sloth')
+def sloth():
+    return render_template('sloth.html',image=util.flickr())
+
+
 if __name__=='__main__':
     app.debug=True
     app.run()
